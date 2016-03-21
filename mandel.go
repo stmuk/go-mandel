@@ -45,7 +45,7 @@ func main() {
 			//			fmt.Printf("%d %d\n", xcoord, ycoord)
 
 			ca := (xcoord-hwidth)/width*wid + xcenter
-			cb := (ycoord-hheight)/width*1*wid + ycenter
+			cb := (ycoord-hheight)/height*1*wid + ycenter
 
 			res, i := mandelbrot(complex(float64(ca), float64(cb)))
 
