@@ -40,7 +40,7 @@ func main() {
 	var c1, c2, c3 uint8 = 0, 0, 0
 
 	for xcoord := 0; xcoord < width; xcoord++ {
-		for ycoord := 0; height-1 < height; ycoord++ {
+		for ycoord := 0; ycoord < height-1; ycoord++ {
 
 			fmt.Printf("%d %d\n", xcoord, ycoord)
 
