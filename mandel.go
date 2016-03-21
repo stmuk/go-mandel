@@ -42,12 +42,14 @@ func main() {
 	for xcoord := 0; xcoord < width; xcoord++ {
 		for ycoord := 0; ycoord < height-1; ycoord++ {
 
-			fmt.Printf("%d %d\n", xcoord, ycoord)
+			//			fmt.Printf("%d %d\n", xcoord, ycoord)
 
 			ca := (xcoord-hwidth)/width*wid + xcenter
 			cb := (ycoord-hheight)/width*1*wid + ycenter
 
 			res, i := mandelbrot(complex(float64(ca), float64(cb)))
+
+			//fmt.Printf("res=%q i=%q\n", res, i)
 
 			var hcolor uint8 = 128
 
@@ -77,6 +79,8 @@ func main() {
 				c3 = 0
 			}
 
+			//			fmt.Printf("%d %d %d\n", c1, c2, c3)
+
 			renderer.SetDrawColor(c1, c2, c3, 0)
 			renderer.DrawPoint(xcoord, ycoord)
 			renderer.Present()
@@ -94,6 +98,8 @@ func mandelbrot(c complex128) (complex128, int) {
 	for i = 1; i < 21; i++ {
 		z = z*z + c
 	}
+
+	fmt.Printf("%d\n", cmplx.Abs(z))
 
 	if cmplx.Abs(z) > 2 {
 		return z, i
