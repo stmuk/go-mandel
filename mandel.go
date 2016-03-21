@@ -42,12 +42,14 @@ func main() {
 	for xcoord := 0; xcoord < width; xcoord++ {
 		for ycoord := 0; ycoord < height-1; ycoord++ {
 
-			//			fmt.Printf("%d %d\n", xcoord, ycoord)
+			fmt.Printf("x=%v y=%v\n", xcoord, ycoord)
 
-			ca := (xcoord-hwidth)/width*wid + xcenter
-			cb := (ycoord-hheight)/height*1*wid + ycenter
+			var ca = float64((xcoord-hwidth)/(width*wid) + xcenter)
+			var cb = float64((ycoord-hheight)/(width*1*wid) + ycenter)
 
-			res, i := mandelbrot(complex(float64(ca), float64(cb)))
+			fmt.Printf("ca=%v\n", ca)
+
+			res, i := mandelbrot(complex(ca, cb))
 
 			//fmt.Printf("res=%q i=%q\n", res, i)
 
@@ -99,7 +101,7 @@ func mandelbrot(c complex128) (complex128, int) {
 		z = z*z + c
 	}
 
-	fmt.Printf("%d\n", cmplx.Abs(z))
+	fmt.Printf("%v\n", z)
 
 	if cmplx.Abs(z) > 2 {
 		return z, i
