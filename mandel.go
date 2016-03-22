@@ -34,6 +34,8 @@ func main() {
 	}
 	defer renderer.Destroy()
 
+	renderer.SetDrawColor(0, 0, 128, 0)
+
 	renderer.Clear()
 	renderer.Present()
 
@@ -42,17 +44,10 @@ func main() {
 	for xcoord := 0; xcoord < width; xcoord++ {
 		for ycoord := 0; ycoord < height-1; ycoord++ {
 
-			fmt.Printf("x=%v y=%v\n", xcoord, ycoord)
-
 			ca := float64(xcoord-hwidth)/float64(width)*wid + xcenter
 			cb := float64(ycoord-hheight)/float64(width)*1*wid + ycenter
 
-			fmt.Printf("ca=%v cb=%v\n", ca, cb)
-
-			//res, i := mandelbrot(complex(ca, cb))
-			var res, i = 0, 0
-
-			//fmt.Printf("res=%q i=%q\n", res, i)
+			res, i := mandelbrot(complex(ca, cb))
 
 			var hcolor uint8 = 128
 
@@ -63,7 +58,7 @@ func main() {
 			if res == 0 {
 				c1 = 0
 				c2 = 0
-				c3 = 0
+				c3 = 128
 			} else if i < 5 {
 				c1 = 0
 				c2 = 0
@@ -82,8 +77,6 @@ func main() {
 				c3 = 0
 			}
 
-			//			fmt.Printf("%d %d %d\n", c1, c2, c3)
-
 			renderer.SetDrawColor(c1, c2, c3, 0)
 			renderer.DrawPoint(xcoord, ycoord)
 			renderer.Present()
@@ -98,14 +91,12 @@ func main() {
 func mandelbrot(c complex128) (complex128, int) {
 	var z complex128 = c
 	var i int
-	for i = 1; i < 21; i++ {
+	for i = 1; i < 20; i++ {
 		z = z*z + c
-	}
 
-	fmt.Printf("%v\n", z)
-
-	if cmplx.Abs(z) > 2 {
-		return z, i
+		if cmplx.Abs(z) > 2 {
+			return z, i
+		}
 	}
 	return 0, 0
 }
