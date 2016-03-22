@@ -16,8 +16,8 @@ func main() {
 	hwidth := int(width / 2)
 	hheight := int(height / 2)
 
-	var wid int = 4
-	var xcenter, ycenter int = -1, 0
+	var wid float64 = 4
+	var xcenter, ycenter float64 = -1, 0
 
 	sdl.Init(sdl.INIT_EVERYTHING)
 
@@ -44,12 +44,13 @@ func main() {
 
 			fmt.Printf("x=%v y=%v\n", xcoord, ycoord)
 
-			var ca = float64((xcoord-hwidth)/(width*wid) + xcenter)
-			var cb = float64((ycoord-hheight)/(width*1*wid) + ycenter)
+			ca := float64(xcoord-hwidth)/float64(width)*wid + xcenter
+			cb := float64(ycoord-hheight)/float64(width)*1*wid + ycenter
 
-			fmt.Printf("ca=%v\n", ca)
+			fmt.Printf("ca=%v cb=%v\n", ca, cb)
 
-			res, i := mandelbrot(complex(ca, cb))
+			//res, i := mandelbrot(complex(ca, cb))
+			var res, i = 0, 0
 
 			//fmt.Printf("res=%q i=%q\n", res, i)
 
