@@ -3,11 +3,14 @@ package main
 import (
 	"fmt"
 	"github.com/veandco/go-sdl2/sdl"
+	"log"
 	"math/cmplx"
 	"os"
+	"time"
 )
 
 func main() {
+	start := time.Now()
 	var renderer *sdl.Renderer
 
 	var width int = 320
@@ -83,6 +86,10 @@ func main() {
 		}
 
 	}
+
+	elapsed := time.Since(start)
+
+	log.Printf("took %s sec(s)", elapsed)
 
 	sdl.Delay(5000)
 	sdl.Quit()
