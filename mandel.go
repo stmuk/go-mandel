@@ -13,8 +13,8 @@ func main() {
 	start := time.Now()
 	var renderer *sdl.Renderer
 
-	var width int = 320
-	var height int = 240
+	var width = 320
+	var height = 240
 
 	hwidth := int(width / 2)
 	hheight := int(height / 2)
@@ -96,7 +96,7 @@ func main() {
 }
 
 func mandelbrot(c complex128) (complex128, int) {
-	var z complex128 = c
+	var z = c
 	var i int
 	for i = 1; i < 20; i++ {
 		z = z*z + c
