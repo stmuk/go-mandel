@@ -2,22 +2,23 @@ package main
 
 import (
 	"fmt"
-	"github.com/veandco/go-sdl2/sdl"
 	"log"
 	"math/cmplx"
 	"os"
 	"time"
+
+	"github.com/veandco/go-sdl2/sdl"
 )
 
 func main() {
 	start := time.Now()
 	var renderer *sdl.Renderer
 
-	var width = 320
-	var height = 240
+	var width int32 = 320
+	var height int32 = 240
 
-	hwidth := int(width / 2)
-	hheight := int(height / 2)
+	hwidth := int32(width / 2)
+	hheight := int32(height / 2)
 
 	var wid float64 = 4
 	var xcenter, ycenter float64 = -1, 0
@@ -44,8 +45,11 @@ func main() {
 
 	var c1, c2, c3 uint8 = 0, 0, 0
 
-	for xcoord := 0; xcoord < width; xcoord++ {
-		for ycoord := 0; ycoord < height-1; ycoord++ {
+	var xcoord int32
+	var ycoord int32
+
+	for xcoord = 0; xcoord < width; xcoord++ {
+		for ycoord = 0; ycoord < height-1; ycoord++ {
 
 			ca := float64(xcoord-hwidth)/float64(width)*wid + xcenter
 			cb := float64(ycoord-hheight)/float64(width)*1*wid + ycenter
