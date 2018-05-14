@@ -14,8 +14,8 @@ func main() {
 	start := time.Now()
 	var renderer *sdl.Renderer
 
-	var width int32 = 1024
-	var height int32 = 768
+	var width int32 = 1920
+	var height int32 = 1080
 
 	hwidth := int32(width / 2)
 	hheight := int32(height / 2)

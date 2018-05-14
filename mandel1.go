@@ -15,8 +15,8 @@ func main() {
 	start := time.Now()
 	var renderer *sdl.Renderer
 
-	var width int32 = 1024
-	var height int32 = 768
+	var width int32 = 1920
+	var height int32 = 1080
 
 	hwidth := int32(width / 2)
 	hheight := int32(height / 2)
@@ -50,7 +50,6 @@ func main() {
 	var ycoord int32
 
 	var wg sync.WaitGroup
-	var mutex = &sync.Mutex{}
 
 	for xcoord = 0; xcoord < width; xcoord++ {
 
@@ -92,9 +91,7 @@ func main() {
 				}
 
 				renderer.SetDrawColor(c1, c2, c3, 0)
-				mutex.Lock()
 				renderer.DrawPoint(xcoord, ycoord)
-				mutex.Unlock()
 			}
 			wg.Done()
 		}(xcoord)
@@ -107,7 +104,7 @@ func main() {
 
 	log.Printf("took %s sec(s)", elapsed)
 
-	sdl.Delay(5000000)
+	sdl.Delay(5000)
 	sdl.Quit()
 }
 
